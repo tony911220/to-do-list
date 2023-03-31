@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Draggable, { DraggableCore } from "react-draggable";
-
+import { IoTrashBinSharp } from "react-icons/io5";
+import { CiCirclePlus } from "react-icons/ci";
+import { AiFillUpCircle } from "react-icons/ai";
+import { AiFillDownCircle } from "react-icons/ai";
+import { FiCheckCircle } from "react-icons/fi";
 function App() {
   const Draggable = require("react-draggable");
   const DraggableCore = Draggable.DraggableCore;
@@ -38,39 +42,49 @@ function App() {
             setinput(e.target.value);
           }}
         />
-        <button
+
+        {/* <button
           type="button"
           class="btn btn-primary"
           onClick={() => addTodo(input, new Date().toLocaleString() + "")}
         >
-          add
-        </button>
-        <button
+          Add
+        </button> */}
+        <CiCirclePlus
+          onClick={() => addTodo(input, new Date().toLocaleString() + "")}
+        ></CiCirclePlus>
+        <IoTrashBinSharp onClick={() => clearTodo()}></IoTrashBinSharp>
+        {/* <button
           type="button"
           class="btn btn-danger"
           onClick={() => clearTodo()}
         >
-          clear
-        </button>
-
-        <ul class="list-group list-group-numbered">
-          {list.map((todo) => (
-            <Draggable>
+          Clear
+        </button> */}
+        <div class="card" style={{ width: "18rem" }}>
+          <ul class="list-group list-group-numbered">
+            {list.map((todo) => (
               <li class="list-group-item" key={todo.id}>
                 {todo.todo}
-                <div style={{ fontSize: "10%" }}>{todo.time}</div>
-
-                <button
+                <div style={{ fontSize: "10%", width: "18rem" }}>
+                  {todo.time}
+                </div>
+                {/* <button
                   type="button"
-                  class="btn btn-light"
+                  class="btn btn-outline-success btn-lg "
                   onClick={() => deleteTodo(todo.id)}
                 >
                   &times;
-                </button>
+                </button> */}
+                <FiCheckCircle
+                  onClick={() => deleteTodo(todo.id)}
+                ></FiCheckCircle>
+                <AiFillUpCircle></AiFillUpCircle>
+                <AiFillDownCircle></AiFillDownCircle>
               </li>
-            </Draggable>
-          ))}
-        </ul>
+            ))}
+          </ul>
+        </div>
       </h1>
     </div>
   );

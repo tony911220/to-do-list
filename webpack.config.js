@@ -4,6 +4,7 @@ module.exports = {
   entry: ["./index.js"],
   output: {
     filename: "compiled.js",
+    path: path.resolve(__dirname, "dist"),
     publicPath: "/",
   },
   resolve: {
